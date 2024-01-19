@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DashBoard Animation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="anCard">
+        <div class="flex-row">
+          <!-- <div class="part1">
+            <div class="counts">
+              <p class="count1">58</p>
+              <div class="count2">
+                <p>25</p>
+                <p>26</p>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="flip-card" id="line-div">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="images/chart-line-svgrepo-com.svg"
+                  alt="line"
+                  style="width: 200px; height: 200px"
+                />
+              </div>
+              <div class="flip-card-back">
+                <p>No Records To Display !</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" id="pie-div">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="images/chart-pie-svgrepo-com.svg"
+                  alt="pie"
+                  style="width: 200px; height: 200px"
+                />
+              </div>
+              <div class="flip-card-back">
+                <p>No Records To Display !</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" id="chart-div">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img
+                  src="images/chart-simple-svgrepo-com.svg"
+                  alt="chart"
+                  style="width: 200px; height: 200px"
+                />
+              </div>
+              <div class="flip-card-back">
+                <p>No Records To Display !</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="counts" id="cnt-div">
+            <p class="cnt1">58</p>
+            <div class="count-row">
+              <p>25</p>
+              <p>26</p>
+            </div>
+          </div>
+
+          <!-- <div class="graphs">
+            <div class="counts">
+              <p class="count1">58</p>
+              <div class="count2">
+                <p>25</p>
+                <p>26</p>
+              </div>
+            </div>
+            <div class="line">
+              <img
+                src="/images/chart-line-svgrepo-com.svg"
+                alt="line"
+                width="180px"
+                height="180px"
+              />
+            </div>
+          </div> -->
+
+          <div class="charts">
+            <img
+              src="/images/chart-line-svgrepo-com.svg"
+              alt="line"
+              width="30px"
+              height="30px"
+              id="line-btn"
+              onclick="toggleDisplay('line-div')"
+            />
+            <img
+              src="/images/chart-pie-svgrepo-com.svg"
+              alt="pie"
+              width="30px"
+              height="30px"
+              id="pie-btn"
+              onclick="toggleDisplay('pie-div')"
+            />
+            <img
+              src="/images/chart-simple-svgrepo-com.svg"
+              alt="chart"
+              width="30px"
+              height="30px"
+              id="chart-btn"
+              onclick="toggleDisplay('chart-div')"
+            />
+            <p class="cnt" id="cnt-btn" onclick="toggleDisplay('cnt-div')">
+              58
+            </p>
+          </div>
+        </div>
+
+        <div class="text">
+          <!-- <div class="counts">
+            <p>58</p>
+            <p>25</p>
+            <p>26</p>
+          </div> -->
+          <p>Your Text Will Goes Here</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function animateCount(element, targetCount, duration) {
+        let startCount = targetCount - 5;
+        const startTime = performance.now();
+
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = elapsed / duration;
+
+          if (progress < 1) {
+            const currentCount = Math.floor(
+              startCount + progress * (targetCount - startCount)
+            );
+            element.textContent = currentCount;
+            requestAnimationFrame(updateCount);
+          } else {
+            element.textContent = targetCount;
+          }
+        }
+
+        requestAnimationFrame(updateCount);
+      }
+
+      const count1 = document.querySelector(".cnt1");
+      const count2 = document.querySelectorAll(".count-row p");
+
+      animateCount(count1, 58, 1000);
+
+      count2.forEach((element, index) => {
+        animateCount(element, index === 0 ? 25 : 26, 1000);
+      });
+
+      let currentlyDisplayed = "cnt-div";
+
+      function toggleDisplay(elementId) {
+        var element = document.getElementById(elementId);
+
+        ["line-div", "pie-div", "chart-div", "cnt-div"]
+          .filter((id) => id !== elementId)
+          .forEach((id) => {
+            document.getElementById(id).style.display = "none";
+          });
+
+        if (
+          element.style.display === "none" ||
+          currentlyDisplayed !== elementId
+        ) {
+          element.style.display = "block";
+          currentlyDisplayed = elementId;
+        } else {
+          element.style.display = "none";
+          currentlyDisplayed = null;
+        }
+      }
+    </script>
+  </body>
+</html>
