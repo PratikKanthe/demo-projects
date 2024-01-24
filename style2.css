@@ -35,6 +35,13 @@
   scroll-snap-type: x mandatory;
 }
 
+.component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .tab {
   position: absolute;
   display: flex;
@@ -66,7 +73,7 @@ p {
 
 .flip-card {
   background-color: transparent;
-  width: 300px;
+  width: 25vw;
   height: 200px;
   perspective: 1000px;
   animation: scale-out 1s linear;

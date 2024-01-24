@@ -75,6 +75,7 @@
             width="30px"
             height="30px"
             class="line-btn"
+            onclick="changeTab('line-div')"
           />
           <img
             src="/images/chart-pie-svgrepo-com.svg"
@@ -82,6 +83,7 @@
             width="30px"
             height="30px"
             class="pie-btn"
+            onclick="changeTab('pie-div')"
           />
           <img
             src="/images/chart-simple-svgrepo-com.svg"
@@ -89,13 +91,92 @@
             width="30px"
             height="30px"
             class="chart-btn"
+            onclick="changeTab('chart-div')"
           />
-          <p class="cnt cnt-btn">58</p>
+          <p class="cnt cnt-btn" onclick="changeTab('cnt-div')">58</p>
         </div>
         <div class="heading">
           <p>Your Text Here</p>
         </div>
       </div>
     </div>
+
+    <script>
+      // Function to change tabs
+      function changeTab(tabName) {
+        const swiper = document.querySelector(".swiper");
+        const tab = document.querySelector(`.${tabName}`);
+        const index = Array.from(swiper.children).indexOf(tab);
+        swiper.scrollLeft = index * swiper.clientWidth;
+
+        // Stop automatic swiper when the user clicks on a tab
+        stopAutomaticSwiper();
+
+        // Trigger count animation when the cnt-div tab is clicked
+        if (tabName === "cnt-div") {
+          const count1 = document.querySelector(".cnt1");
+          const count2 = document.querySelectorAll(".count-row p");
+
+          animateCount(count1, 58, 1000);
+
+          count2.forEach((element, index) => {
+            animateCount(element, index === 0 ? 25 : 26, 1000);
+          });
+        }
+      }
+
+      // Automatic swiper timing
+      let intervalId;
+
+      function startAutomaticSwiper() {
+        intervalId = setInterval(() => {
+          const swiper = document.querySelector(".swiper");
+          const nextIndex =
+            (swiper.scrollLeft + swiper.clientWidth) % swiper.scrollWidth;
+          swiper.scrollLeft = nextIndex;
+        }, 7000);
+      }
+
+      // Start automatic swiper when the page loads
+      window.addEventListener("load", startAutomaticSwiper);
+
+      // Stop automatic swiper when the user clicks on a tab
+      function stopAutomaticSwiper() {
+        clearInterval(intervalId);
+      }
+
+      // count animation
+      function animateCount(element, targetCount, duration) {
+        let startCount = targetCount - 10;
+        const startTime = performance.now();
+
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = elapsed / duration;
+
+          if (progress < 1) {
+            const currentCount = Math.floor(
+              startCount + progress * (targetCount - startCount)
+            );
+            element.textContent = currentCount;
+            requestAnimationFrame(updateCount);
+          } else {
+            element.textContent = targetCount;
+          }
+        }
+
+        requestAnimationFrame(updateCount);
+      }
+
+      // Trigger count animation for count1 and count2 when the page loads
+      const count1 = document.querySelector(".cnt1");
+      const count2 = document.querySelectorAll(".count-row p");
+
+      animateCount(count1, 58, 1000);
+
+      count2.forEach((element, index) => {
+        animateCount(element, index === 0 ? 25 : 26, 1000);
+      });
+    </script>
   </body>
 </html>
