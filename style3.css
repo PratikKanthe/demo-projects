@@ -4,17 +4,15 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .container {
-  height: 100vh;
-  display: grid;
-  place-items: center;
+  margin: 1rem 1rem;
+  display: flex;
+  gap: 1rem;
 }
-
 .card {
   display: flex;
   flex-direction: column;
-  width: 25vw;
+  width: 43vw;
   box-shadow: 0 1px 10px rgb(0 0 0 / 30%);
   animation: slideup 1s linear forwards;
 }
@@ -73,10 +71,12 @@ p {
 
 .flip-card {
   background-color: transparent;
-  width: 25vw;
+  width: 43vw;
   height: 200px;
   perspective: 1000px;
   animation: scale-out 1s linear;
+  background-color: blueviolet;
+  border-left: 1px solid black;
 }
 
 .flip-card-inner {

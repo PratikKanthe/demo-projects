@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Card</title>
-    <link rel="stylesheet" href="style2.css" />
+    <title>Page #</title>
+    <link rel="stylesheet" href="style3.css" />
   </head>
   <body>
     <div class="container">
@@ -14,12 +14,12 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img
+                  <!-- <img
                     src="images/chart-line-svgrepo-com.svg"
                     alt="line"
                     style="width: 200px; height: 200px"
                     class="scaleup"
-                  />
+                  /> -->
                 </div>
                 <div class="flip-card-back">
                   <p class="nrd">No Records To Display !</p>
@@ -31,12 +31,12 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img
+                  <!-- <img
                     src="images/chart-pie-svgrepo-com.svg"
                     alt="pie"
                     style="width: 200px; height: 200px"
                     class="scaleup"
-                  />
+                  /> -->
                 </div>
                 <div class="flip-card-back">
                   <p class="nrd">No Records To Display !</p>
@@ -48,12 +48,12 @@
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <img
+                  <!-- <img
                     src="images/chart-simple-svgrepo-com.svg"
                     alt="chart"
                     style="width: 200px; height: 200px"
                     class="scaleup"
-                  />
+                  /> -->
                 </div>
                 <div class="flip-card-back">
                   <p class="nrd">No Records To Display !</p>
@@ -61,7 +61,7 @@
               </div>
             </div>
           </div>
-          <div class="component cnt-div">
+          <!-- <div class="component cnt-div">
             <div class="counts">
               <p class="cnt1">58</p>
               <div class="count-row">
@@ -69,7 +69,102 @@
                 <p>26</p>
               </div>
             </div>
+          </div> -->
+        </div>
+        <div class="tab">
+          <img
+            src="/images/chart-line-svgrepo-com.svg"
+            alt="line"
+            width="30px"
+            height="30px"
+            class="line-btn"
+            onclick="changeTab('line-div')"
+          />
+          <img
+            src="/images/chart-pie-svgrepo-com.svg"
+            alt="pie"
+            width="30px"
+            height="30px"
+            class="pie-btn"
+            onclick="changeTab('pie-div')"
+          />
+          <img
+            src="/images/chart-simple-svgrepo-com.svg"
+            alt="chart"
+            width="30px"
+            height="30px"
+            class="chart-btn"
+            onclick="changeTab('chart-div')"
+          />
+          <p class="cnt cnt-btn" onclick="changeTab('cnt-div')">58</p>
+        </div>
+        <div class="heading">
+          <p>Your Text Here</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swiper">
+          <div class="component line-div">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <!-- <img
+                      src="images/chart-line-svgrepo-com.svg"
+                      alt="line"
+                      style="width: 200px; height: 200px"
+                      class="scaleup"
+                    /> -->
+                </div>
+                <div class="flip-card-back">
+                  <p class="nrd">No Records To Display !</p>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="component pie-div">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <!-- <img
+                      src="images/chart-pie-svgrepo-com.svg"
+                      alt="pie"
+                      style="width: 200px; height: 200px"
+                      class="scaleup"
+                    /> -->
+                </div>
+                <div class="flip-card-back">
+                  <p class="nrd">No Records To Display !</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="component chart-div">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <!-- <img
+                      src="images/chart-simple-svgrepo-com.svg"
+                      alt="chart"
+                      style="width: 200px; height: 200px"
+                      class="scaleup"
+                    /> -->
+                </div>
+                <div class="flip-card-back">
+                  <p class="nrd">No Records To Display !</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="component cnt-div">
+            <div class="counts">
+              <p class="cnt1">58</p>
+              <div class="count-row">
+                <p>25</p>
+                <p>26</p>
+              </div>
+            </div>
+          </div> -->
         </div>
         <div class="tab">
           <img
@@ -103,7 +198,6 @@
         </div>
       </div>
     </div>
-
     <script>
       // Function to change tabs
       function changeTab(tabName) {
