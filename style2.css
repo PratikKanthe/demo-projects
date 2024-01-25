@@ -63,7 +63,7 @@ p {
 
 .counts {
   background-color: transparent;
-  width: 300px;
+  width: 25vw;
   height: 200px;
   /* animation: scale-out 1s linear; */
   display: flex;
@@ -125,4 +125,9 @@ p {
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.nrd {
+  color: gray;
+  padding-top: 1rem;
 }
